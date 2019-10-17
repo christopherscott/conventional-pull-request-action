@@ -1,14 +1,10 @@
-name: 'Test typescript-action'
+name: Validate PR
 on:
   pull_request:
     types: [edited, opened, synchronize, reopened]
-  push:
-    branches:
-      - master
-      - 'releases/*'
 
 jobs:
-  test:
+  commit-message:
     runs-on: ubuntu-latest
     steps:
       - name: review pull request thing
