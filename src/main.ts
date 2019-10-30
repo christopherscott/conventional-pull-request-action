@@ -27,6 +27,10 @@ async function run() {
     };
 
     const result = await octokit.repos.createStatus(status);
+
+    const reposInfo = await octokit.repos.get();
+
+    console.log(JSON.stringify(reposInfo));
   } catch (error) {
     // core.setFailed(error.message);
     console.log('err0r!', error);
