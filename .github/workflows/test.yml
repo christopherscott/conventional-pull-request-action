@@ -8,6 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: review pull request thing
-        uses: christopherscott/conventional-pull-request-action@releases/v1
+        uses: christopherscott/conventional-pull-request-action@releases/v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
