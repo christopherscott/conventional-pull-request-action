@@ -92,6 +92,8 @@ See the [versioning documentation](https://github.com/actions/toolkit/blob/maste
 
 ## Validate
 
+adsf
+
 You can now validate the action by referencing the releases/v1 branch
 
 ```yaml
