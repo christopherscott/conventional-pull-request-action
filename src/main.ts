@@ -8,6 +8,7 @@ async function run() {
     if (!process.env.GITHUB_TOKEN) throw 'GITHUB_TOKEN env var required';
 
     const { owner, repo } = github.context.repo;
+    console.log(JSON.stringify(github.context.repo));
     const { title, head } = github.context!.payload!.pull_request!;
     const isTitleSemantic = isSemanticMessage(title);
     const octokit = new github.GitHub(process.env.GITHUB_TOKEN);
