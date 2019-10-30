@@ -5,9 +5,9 @@ import isSemanticMessage from './is-semantic-message';
 
 function getMessage(ok, singleCommit) {
   if (!ok && singleCommit) {
-    return 'Make sure your commit message is semantic';
+    return 'Single commit message is not conventional';
   } else if (!ok && !singleCommit) {
-    return 'Make sure your PR title is semantic';
+    return 'PR title is not conventional';
   }
 
   return 'Ready to be squashed and merged';
@@ -41,7 +41,7 @@ async function run() {
       sha: head.sha,
       state: ok ? 'success' : 'pending',
       description: message,
-      context: 'Conventional Squash Commits',
+      context: 'Semantic Squash',
     };
 
     await octokit.repos.createStatus(status);
