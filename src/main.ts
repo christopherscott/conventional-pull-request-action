@@ -9,28 +9,23 @@ async function run() {
 
     const { owner, repo } = github.context.repo;
     console.log(JSON.stringify(github.context.repo));
-    const { title, head } = github.context!.payload!.pull_request!;
-    const isTitleSemantic = isSemanticMessage(title);
     const octokit = new github.GitHub(process.env.GITHUB_TOKEN);
-
-    const state = isTitleSemantic ? 'success' : 'pending';
-
-    const description = 'this is the description';
-
-    const status: ReposCreateStatusParams = {
-      owner,
-      repo,
-      state,
-      sha: head.sha,
-      description,
-      context: 'Conventional Pull Request',
-    };
-
-    const result = await octokit.repos.createStatus(status);
-
-    const reposInfo = await octokit.repos.get();
-
+    const reposInfo = await octokit.repos.get({ repo, owner });
     console.log(JSON.stringify(reposInfo));
+
+    // const { title, head } = github.context!.payload!.pull_request!;
+    // const isTitleSemantic = isSemanticMessage(title);
+    // const state = isTitleSemantic ? 'success' : 'pending';
+    // const description = 'this is the description';
+    // const status: ReposCreateStatusParams = {
+    //   owner,
+    //   repo,
+    //   state,
+    //   sha: head.sha,
+    //   description,
+    //   context: 'Conventional Pull Request',
+    // };
+    // const result = await octokit.repos.createStatus(status);
   } catch (error) {
     // core.setFailed(error.message);
     console.log('err0r!', error);
