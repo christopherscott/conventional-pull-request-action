@@ -2,7 +2,6 @@ import * as core from '@actions/core';
 // @ts-ignore
 import conventionalCommitTypes from 'conventional-commit-types';
 import { validate } from 'parse-commit-message';
-import { wait } from './wait';
 
 const commitTypes = Object.keys(conventionalCommitTypes.types);
 
